@@ -14,6 +14,7 @@ class MyString {
   static const libreBold = 'Libre_Bold';
   static const sherifTechRegular = 'ShareTech_Regular';
 
+  static const boxName = "login-info";
 
   static const errorMsg = "Opps! something went wrong";
 }

@@ -25,6 +25,7 @@ class CmNameField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             decoration: InputDecoration(hintText: hint),
+            onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
             validator: (value) {
               if (value!.trim().isEmpty) {
                 return 'Please Fill Up The Form';

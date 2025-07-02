@@ -42,9 +42,9 @@ class MyDimens {
     ),
   ];
 
-  Widget getImageIcon() => Container(
-        decoration: const BoxDecoration(
-            shape: BoxShape.circle, color: MyColor.homeBodyColor),
+  Widget getImageIcon() => CircleAvatar(
+        radius: 24,
+        backgroundColor: MyColor.homeBodyColor,
         child: const CircleAvatar(
           radius: 22,
           backgroundColor: Colors.transparent,

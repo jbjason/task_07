@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:task_07/core/util/my_dialog.dart';
-import 'package:task_07/feature/add_task/presentation/page/add_task_screen.dart';
 import 'package:task_07/feature/home/data/model/task.dart';
 import 'package:task_07/feature/home/data/repository/home_repository.dart';
 import 'package:task_07/feature/home/presentation/provider/task_provider.dart';
@@ -14,6 +13,7 @@ class HomeListviewItemTop extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = HomeRepository.taskCategories[task.category].color;
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // category title
         Text(
@@ -25,15 +25,6 @@ class HomeListviewItemTop extends StatelessWidget {
               color: color,
             ),
           ),
-        ),
-        Spacer(),
-        // edit icon
-        InkWell(
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => AddTaskScreen(task: task)),
-          ),
-          child: Icon(Icons.edit, size: 15, color: color),
         ),
         const SizedBox(width: 15),
         // delete icon

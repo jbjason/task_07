@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_07/core/util/my_color.dart';
+import 'package:task_07/feature/add_task/presentation/page/add_task_screen.dart';
 import 'package:task_07/feature/home/data/model/task.dart';
 import 'package:task_07/feature/home/data/repository/home_repository.dart';
 import 'package:task_07/feature/home/presentation/widget/home_listview_item_bottom.dart';
@@ -9,21 +10,26 @@ import 'package:task_07/feature/home/presentation/widget/home_listview_item_top.
 class HomeListViewItem extends StatelessWidget {
   const HomeListViewItem({required this.task, super.key});
   final Task task;
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // category type & delete Icon
-        HomeListviewItemTop(task: task),
-        Divider(color: Colors.grey[300]),
-        const SizedBox(height: 5),
-        // title & details
-        Expanded(child: _body()),
-        const SizedBox(height: 20),
-        // starting, ending time & share icon
-        HomeListviewItemBottom(task: task),
-      ],
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => AddTaskScreen(task: task)),
+      ),
+      child: Column(
+        children: [
+          // category type & delete Icon
+          HomeListviewItemTop(task: task),
+          Divider(color: Colors.grey[300]),
+          const SizedBox(height: 5),
+          // title & details
+          Expanded(child: _body()),
+          const SizedBox(height: 20),
+          // starting, ending time & share icon
+          HomeListviewItemBottom(task: task),
+        ],
+      ),
     );
   }
 
