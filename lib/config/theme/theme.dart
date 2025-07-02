@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:task_07/core/util/my_color.dart';
 import 'package:task_07/core/util/my_string.dart';
@@ -88,30 +87,26 @@ abstract class AppTheme {
         inputDecorationTheme: const InputDecorationTheme(
           labelStyle: TextStyle(fontSize: 12, color: MyColor.textThird),
           hintStyle: TextStyle(
-              fontSize: 14, color: MyColor.textThird, letterSpacing: 1.2),
-          prefixStyle: TextStyle(
-            fontSize: 14,
-            color: MyColor.textColor,
-            fontWeight: FontWeight.bold,
-          ),
+              fontSize: 12, color: MyColor.textThird, letterSpacing: 1.2),
+          isDense: true,
           filled: true,
           prefixIconColor: MyColor.textThird,
-          fillColor: Colors.white,
-          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          fillColor: MyColor.cardBackgroundColor,
+          contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 20),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(color: MyColor.inActiveColor, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderSide: BorderSide(color: MyColor.inActiveColor, width: 0.3),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(color: MyColor.inActiveColor, width: 0.5),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderSide: BorderSide(color: MyColor.inActiveColor, width: 0.3),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
             borderSide: BorderSide(color: Colors.red),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
             borderSide: BorderSide(color: Colors.red),
           ),
         ),

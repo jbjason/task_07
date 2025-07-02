@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_07/core/util/my_color.dart';
+import 'package:task_07/core/util/my_image.dart';
 
 class MyDimens {
   static const cmDivider = Divider(color: MyColor.inActiveColor, thickness: .5);
@@ -29,7 +31,7 @@ class MyDimens {
   final bodyShadow = [
     BoxShadow(
       color: //Colors.grey[300]!, //
-      const Color(0xFF3F6080).withOpacity(.4),
+          const Color(0xFF3F6080).withOpacity(.4),
       blurRadius: 15,
       offset: const Offset(5, 5),
     ),
@@ -39,4 +41,28 @@ class MyDimens {
       offset: const Offset(-5, -5),
     ),
   ];
+
+  Widget getImageIcon() => Container(
+        decoration: const BoxDecoration(
+            shape: BoxShape.circle, color: MyColor.homeBodyColor),
+        child: const CircleAvatar(
+          radius: 22,
+          backgroundColor: Colors.transparent,
+          child: CircleAvatar(
+            radius: 20,
+            backgroundImage: NetworkImage(MyImage.randomImage),
+          ),
+        ),
+      );
+
+  Widget getTitleText(String title) => Text(
+        title,
+        style: GoogleFonts.fjallaOne(
+          textStyle: const TextStyle(
+            color: MyColor.logBackColor,
+            fontSize: 27,
+            letterSpacing: 1.5,
+          ),
+        ),
+      );
 }

@@ -19,4 +19,9 @@ class MyImage {
   static const patientIconFillImg = "assets/icons/patient_fill.svg";
   static const profileIconImg = "assets/icons/profile.svg";
   static const profileIconFillImg = "assets/icons/profile_fill.svg";
+  
+  
+  static const randomImage = "https://picsum.photos/200/300?random=10";
+
+  
 }
