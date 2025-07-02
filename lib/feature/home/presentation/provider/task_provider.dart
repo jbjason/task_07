@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:task_07/core/base/base_client.dart';
 import 'package:task_07/feature/home/data/model/task.dart';
+import 'package:task_07/feature/home/data/repository/home_repository.dart';
 
 class TaskProvider with ChangeNotifier {
-  final List<Task> _tasks = [];
+  final List<Task> _tasks = HomeRepository.defaultTasks;
 
   List<Task> get getTasks => [..._tasks];
 
@@ -13,7 +14,6 @@ class TaskProvider with ChangeNotifier {
   }
 
   void addTask(Task task) {
-    print("coming to add");
     _tasks.add(task);
     notifyListeners();
   }
@@ -25,7 +25,8 @@ class TaskProvider with ChangeNotifier {
       notifyListeners();
     }
   }
-  void deleteTask(String id){
+
+  void deleteTask(String id) {
     _tasks.removeWhere((task) => task.id == id);
     notifyListeners();
   }

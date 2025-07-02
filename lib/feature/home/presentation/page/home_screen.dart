@@ -8,7 +8,6 @@ import 'package:task_07/feature/home/presentation/widget/home_title_button.dart'
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home-screen';
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final selectedDate = ValueNotifier<DateTime>(DateTime.now());

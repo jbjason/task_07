@@ -10,7 +10,8 @@ import 'package:task_07/feature/home/data/model/task.dart';
 import 'package:task_07/feature/home/presentation/provider/task_provider.dart';
 
 class AddTaskBody extends StatefulWidget {
-  const AddTaskBody({super.key});
+  const AddTaskBody({super.key, this.task});
+  final Task? task;
   @override
   State<AddTaskBody> createState() => _AddTaskBodyState();
 }
@@ -23,6 +24,23 @@ class _AddTaskBodyState extends State<AddTaskBody> {
   final _startTimeController = TextEditingController();
   final _endTimeController = TextEditingController();
   int _selectedCategory = 0;
+  bool _isEditMode = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.task != null) {
+      _isEditMode = true;
+      _titleController.text = widget.task!.title;
+      _detailsController.text = widget.task!.details;
+      _dateController.text = DateFormat.yMMMd().format(widget.task!.date);
+      _startTimeController.text =
+          "${widget.task!.startTime ~/ 60}:${widget.task!.startTime % 60}";
+      _endTimeController.text =
+          "${widget.task!.endTime ~/ 60}:${widget.task!.endTime % 60}";
+      _selectedCategory = widget.task!.category;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +51,10 @@ class _AddTaskBodyState extends State<AddTaskBody> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // appBar
-          SizedBox(height: size.height * .2, child: const AddtAppbar()),
+          SizedBox(
+            height: size.height * .2,
+            child: AddtAppbar(isEditMode: _isEditMode),
+          ),
           // taskName textFiled
           CmNameField(hint: 'Your Task Name', controller: _titleController),
           const SizedBox(height: 20),
@@ -54,7 +75,7 @@ class _AddTaskBodyState extends State<AddTaskBody> {
           ),
           const SizedBox(height: 40),
           // create task Button
-          AddtButton(onSubmit: _onSubmit),
+          AddTaskButton(isEditMode: _isEditMode, onSubmit: _onSubmit),
         ],
       ),
     );
@@ -74,18 +95,17 @@ class _AddTaskBodyState extends State<AddTaskBody> {
         int.parse(endTimeSplit[0]) * 60 + int.parse(endTimeSplit[1]);
     // adding task
     final data = Provider.of<TaskProvider>(context, listen: false);
-    data.addTask(
-      Task(
-        id: '',
-        title: _titleController.text.trim(),
-        details: _detailsController.text.trim(),
-        startTime: startTime,
-        endTime: endTime,
-        taskDate: DateFormat("MMM d, yyyy").parse(_dateController.text),
-        date: DateTime.now(),
-        category: _selectedCategory,
-      ),
+    final task = Task(
+      id: _isEditMode ? widget.task!.id : DateTime.now().toString(),
+      title: _titleController.text.trim(),
+      details: _detailsController.text.trim(),
+      startTime: startTime,
+      endTime: endTime,
+      taskDate: DateFormat("MMM d, yyyy").parse(_dateController.text),
+      date: DateTime.now(),
+      category: _selectedCategory,
     );
+    _isEditMode ? data.updateTask(task) : data.addTask(task);
     Navigator.pop(context);
   }
 

@@ -22,16 +22,27 @@ class HomeListView extends StatelessWidget {
             ),
           );
         }
-        final tasks = Provider.of<TaskProvider>(context).getTasks;
-        return ListView.separated(
-          itemCount: tasks.length,
-          clipBehavior: Clip.none,
-          separatorBuilder: (_, __) => const SizedBox(height: 20),
-          itemBuilder: (context, i) {
-            return HomeRepository().getGlassEffect(
-              child: HomeListViewItem(task: tasks[i]),
-            );
+        return RefreshIndicator(
+          backgroundColor: Colors.white,
+          onRefresh: () async {
+            await Future.delayed(Duration(seconds: 1));
+            // Provider.of<TaskProvider>(context, listen: false).fetchTaskList(context),
           },
+          child: _getBody(context),
+        );
+      },
+    );
+  }
+
+  Widget _getBody(BuildContext context) {
+    final tasks = Provider.of<TaskProvider>(context).getTasks;
+    return ListView.separated(
+      itemCount: tasks.length,
+      clipBehavior: Clip.none,
+      separatorBuilder: (_, __) => const SizedBox(height: 20),
+      itemBuilder: (context, i) {
+        return HomeRepository.getGlassEffect(
+          child: HomeListViewItem(task: tasks[i]),
         );
       },
     );

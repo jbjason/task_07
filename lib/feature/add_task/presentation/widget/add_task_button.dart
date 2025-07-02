@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:task_07/core/util/my_color.dart';
 
-class AddtButton extends StatelessWidget {
-  const AddtButton({required this.onSubmit, super.key});
+class AddTaskButton extends StatelessWidget {
+  const AddTaskButton(
+      {required this.isEditMode, required this.onSubmit, super.key});
+  final bool isEditMode;
   final Function onSubmit;
 
   @override
@@ -17,9 +19,9 @@ class AddtButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           gradient: MyColor.loginGradient,
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            'Create New Task',
+            isEditMode ? "Update" : 'Create New Task',
             style: TextStyle(
               fontWeight: FontWeight.w900,
               color: Colors.white70,

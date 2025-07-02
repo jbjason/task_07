@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:task_07/config/extension/media_query_extension.dart';
 import 'package:task_07/feature/add_task/presentation/widget/add_task_body.dart';
 import 'package:task_07/feature/add_task/presentation/widget/add_task_painter.dart';
+import 'package:task_07/feature/home/data/model/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
   static const routeName = '/add-task-screen';
-  const AddTaskScreen({super.key});
-
+  const AddTaskScreen({super.key, this.task});
+  final Task? task;
   @override
   Widget build(BuildContext context) {
+    print("--------");
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -22,7 +24,7 @@ class AddTaskScreen extends StatelessWidget {
               width: context.screenWidth,
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
               child: SingleChildScrollView(
-                child: AddTaskBody(),
+                child: AddTaskBody(task: task),
               ),
             ),
           ],

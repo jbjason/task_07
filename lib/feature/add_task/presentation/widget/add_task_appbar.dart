@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:task_07/core/util/my_dimens.dart';
 
 class AddtAppbar extends StatelessWidget {
-  const AddtAppbar({super.key});
+  const AddtAppbar({super.key, required this.isEditMode});
+  final bool isEditMode;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,8 @@ class AddtAppbar extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20, top: 10),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: MyDimens().getTitleText('Add Task'),
+            child: MyDimens()
+                .getTitleText("${isEditMode ? "Update" : "Add"} Task"),
           ),
         ),
       ],
