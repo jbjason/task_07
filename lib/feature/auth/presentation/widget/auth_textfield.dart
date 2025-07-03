@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:task_07/core/util/my_color.dart';
 
 class AuthTextField extends StatelessWidget {
@@ -16,10 +15,10 @@ class AuthTextField extends StatelessWidget {
         // title text
         Text(
           title,
-          style: GoogleFonts.fjallaOne(
-            textStyle: const TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white70),
-          ),
+          style:
+          Theme.of(context).textTheme.titleSmall!.copyWith(
+            fontWeight: FontWeight.bold, color: Colors.white70
+          )
         ),
         const SizedBox(height: 2),
         //  textfield

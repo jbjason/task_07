@@ -28,7 +28,7 @@ class AddtAppbar extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: MyDimens()
-                .getTitleText("${isEditMode ? "Update" : "Add"} Task"),
+                .getTitleText("${isEditMode ? "Update" : "Add"} Task", context),
           ),
         ),
       ],

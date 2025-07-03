@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:task_07/core/util/my_dialog.dart';
 import 'package:task_07/feature/home/data/model/task.dart';
@@ -18,13 +17,10 @@ class HomeListviewItemTop extends StatelessWidget {
         // category title
         Text(
           HomeRepository.taskCategories[task.category].title,
-          style: GoogleFonts.fjallaOne(
-            textStyle: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: color,
-            ),
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .bodySmall!
+              .copyWith(fontWeight: FontWeight.bold, color: color),
         ),
         const SizedBox(width: 15),
         // delete icon

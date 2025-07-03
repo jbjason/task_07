@@ -51,8 +51,10 @@ class AuthButtons extends StatelessWidget {
                       isLogin
                           ? 'Create new account'
                           : 'I already have an account',
-                      style:
-                          const TextStyle(fontSize: 12, color: Colors.white70),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: Colors.white70),
                     ),
                   ),
                 )

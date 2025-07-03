@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:task_07/config/extension/media_query_extension.dart';
 import 'package:task_07/core/util/my_color.dart';
 import 'package:task_07/feature/auth/presentation/widget/auth_buttons.dart';
@@ -56,13 +55,17 @@ class _AuhtBodyState extends State<AuhtBody> {
                 Center(
                   child: Text(
                      _isLogin ?'LOGIN' : 'SIGNUP',
-                    style: GoogleFonts.fjallaOne(
-                      textStyle: const TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                    style:Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
                         color: Colors.white70,
-                      ),
-                    ),
+                    )
+                    //  GoogleFonts.fjallaOne(
+                    //   textStyle: const TextStyle(
+                    //     fontSize: 25,
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.white70,
+                    //   ),
+                    // ),
                   ),
                 ),
               SizedBox(height: _isLogin ? 36 : 15),

@@ -22,10 +22,10 @@ class AddTaskButton extends StatelessWidget {
         child: Center(
           child: Text(
             isEditMode ? "Update" : 'Create New Task',
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-              color: Colors.white70,
-            ),
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge!
+                .copyWith(color: Colors.white70, fontWeight: FontWeight.w900),
           ),
         ),
       ),

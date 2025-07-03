@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:task_07/core/util/my_color.dart';
 import 'package:task_07/core/util/my_image.dart';
 
@@ -55,14 +54,6 @@ class MyDimens {
         ),
       );
 
-  Widget getTitleText(String title) => Text(
-        title,
-        style: GoogleFonts.fjallaOne(
-          textStyle: const TextStyle(
-            color: MyColor.logBackColor,
-            fontSize: 27,
-            letterSpacing: 1.5,
-          ),
-        ),
-      );
+  Widget getTitleText(String title, BuildContext ctx) =>
+      Text(title, style: Theme.of(ctx).textTheme.titleLarge);
 }

@@ -20,13 +20,13 @@ class _HomeSearchCountBarState extends State<HomeSearchCountBar> {
       children: [
         // search text-field
         _getSearchField,
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         // count bar
         Align(
           alignment: Alignment.centerRight,
           child: Text("$length tasks found"),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task_07/core/util/my_color.dart';
 import 'package:task_07/core/util/my_string.dart';
 
@@ -21,36 +22,48 @@ abstract class AppTheme {
   /// Light theme and its settings.
   static ThemeData light() => ThemeData(
         visualDensity: visualDensity,
-        textTheme: const TextTheme(
-          titleLarge: TextStyle(
-            color: MyColor.textColor,
-            fontFamily: MyString.libreBold,
-            fontSize: 28,
+        textTheme: TextTheme(
+          titleLarge: GoogleFonts.fjallaOne(
+            textStyle: TextStyle(
+              color: MyColor.textColor,
+              fontFamily: MyString.libreBold,
+              fontSize: 28,
+            ),
           ),
-          titleMedium: TextStyle(
-            color: MyColor.textColor,
-            fontSize: 22,
-            fontFamily: MyString.libreBold,
+          titleMedium: GoogleFonts.fjallaOne(
+            textStyle: TextStyle(
+              color: MyColor.textColor,
+              fontSize: 25,
+              fontFamily: MyString.libreBold,
+            ),
           ),
-          titleSmall: TextStyle(
-            fontSize: 18,
-            color: MyColor.textColor,
-            fontFamily: MyString.libreBold,
+          titleSmall: GoogleFonts.fjallaOne(
+            textStyle: TextStyle(
+              fontSize: 18,
+              color: MyColor.textColor,
+              fontFamily: MyString.libreBold,
+            ),
           ),
-          bodyLarge: TextStyle(
-            fontSize: 17,
-            color: MyColor.textColor,
-            fontFamily: MyString.libreRegular,
+          bodyLarge: GoogleFonts.fjallaOne(
+            textStyle: TextStyle(
+              fontSize: 17,
+              color: MyColor.textColor,
+              fontFamily: MyString.libreRegular,
+            ),
           ),
-          bodyMedium: TextStyle(
-            fontSize: 14,
-            color: MyColor.textColor,
-            fontFamily: MyString.libreRegular,
+          bodyMedium: GoogleFonts.fjallaOne(
+            textStyle: TextStyle(
+              fontSize: 14,
+              color: MyColor.textColor,
+              fontFamily: MyString.libreRegular,
+            ),
           ),
-          bodySmall: TextStyle(
-            fontSize: 11,
-            color: MyColor.textColor,
-            fontFamily: MyString.libreRegular,
+          bodySmall: GoogleFonts.fjallaOne(
+            textStyle: TextStyle(
+              fontSize: 11,
+              color: MyColor.textColor,
+              fontFamily: MyString.libreRegular,
+            ),
           ),
           labelLarge: TextStyle(
             fontSize: 16,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:task_07/core/util/my_color.dart';
 import 'package:task_07/core/util/my_dimens.dart';
@@ -17,7 +16,7 @@ class HomeTitleButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // title
-          MyDimens().getTitleText('TODO'),
+          MyDimens().getTitleText('TODO', context),
           const SizedBox(width: 8),
           // todays date
           ValueListenableBuilder(
@@ -26,9 +25,10 @@ class HomeTitleButton extends StatelessWidget {
               final date = DateFormat('MMM d').format(val);
               return Text(
                 date,
-                style: GoogleFonts.fjallaOne(
-                  textStyle: const TextStyle(color: Colors.grey),
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: Colors.grey),
               );
             },
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_07/core/util/my_color.dart';
 import 'package:task_07/feature/home/data/model/task.dart';
 
 class HomeListviewItemBottom extends StatelessWidget {
@@ -8,16 +7,16 @@ class HomeListviewItemBottom extends StatelessWidget {
   final Task task;
   @override
   Widget build(BuildContext context) {
-     final startTime = _getTime(task.startTime);
+    final startTime = _getTime(task.startTime);
     final endTime = _getTime(task.endTime);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         // Due-date
-        _iconText(CupertinoIcons.clock, startTime),
-        _iconText(Icons.alarm_off_outlined, endTime),
-        _iconText(Icons.share_outlined, 'Share'),
+        _iconText(CupertinoIcons.clock, startTime, context),
+        _iconText(Icons.alarm_off_outlined, endTime, context),
+        _iconText(Icons.share_outlined, 'Share', context),
       ],
     );
   }
@@ -28,13 +27,13 @@ class HomeListviewItemBottom extends StatelessWidget {
     return '$startHour:${time % 60} $amPm';
   }
 
-  Widget _iconText(IconData icon, String title) => Row(
+  Widget _iconText(IconData icon, String title, BuildContext context) => Row(
         children: [
           Icon(icon, color: Colors.grey[400]),
           const SizedBox(width: 5),
           Text(
             title,
-            style: const TextStyle(fontSize: 10, color: MyColor.logBackColor),
+            style: Theme.of(context).textTheme.bodySmall!,
           ),
         ],
       );

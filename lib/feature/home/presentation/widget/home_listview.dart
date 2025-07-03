@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_07/feature/add_task/presentation/page/add_task_screen.dart';
 import 'package:task_07/feature/home/data/repository/home_repository.dart';
 import 'package:task_07/feature/home/presentation/provider/task_provider.dart';
 import 'package:task_07/feature/home/presentation/widget/home_listview_item.dart';
@@ -35,15 +36,25 @@ class HomeListView extends StatelessWidget {
     final tasks = Provider.of<TaskProvider>(context).searchTaskList;
     return Column(
       children: [
+        // search bar & task-count
         HomeSearchCountBar(),
+        // tasks list
         Expanded(
           child: ListView.separated(
             itemCount: tasks.length,
             clipBehavior: Clip.none,
             separatorBuilder: (_, __) => const SizedBox(height: 20),
             itemBuilder: (context, i) {
-              return HomeRepository.getGlassEffect(
-                child: HomeListViewItem(task: tasks[i]),
+              return GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => AddTaskScreen(task: tasks[i]),
+                  ),
+                ),
+                child: HomeRepository.getGlassEffect(
+                  child: HomeListViewItem(task: tasks[i]),
+                ),
               );
             },
           ),
