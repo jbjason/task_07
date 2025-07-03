@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_07/core/util/my_color.dart';
 import 'package:task_07/core/util/my_string.dart';
-
-abstract class AppColors {
-  static const secondary = Color(0xFF3B76F6);
-  static const accent = Color(0xFFD6755B);
-  static const textDark = Color(0xFF53585A);
-  static const textLigth = Color(0xFFF5F5F5);
-  static const textFaded = Color(0xFF9899A5);
-  static const iconLight = Color(0xFFB1B4C0);
-  static const iconDark = Color(0xFFB1B3C1);
-  static const textHighlight = secondary;
-  static const cardLight = Color(0xFFEEEEEE);
-  static const cardDark = Color(0xFF303334);
-}
 
 abstract class AppTheme {
   static final visualDensity = VisualDensity.adaptivePlatformDensity;
@@ -27,62 +15,62 @@ abstract class AppTheme {
             textStyle: TextStyle(
               color: MyColor.textColor,
               fontFamily: MyString.libreBold,
-              fontSize: 28,
+              fontSize: 28.w,
             ),
           ),
           titleMedium: GoogleFonts.fjallaOne(
             textStyle: TextStyle(
               color: MyColor.textColor,
-              fontSize: 25,
+              fontSize: 25.w,
               fontFamily: MyString.libreBold,
             ),
           ),
           titleSmall: GoogleFonts.fjallaOne(
             textStyle: TextStyle(
-              fontSize: 18,
+              fontSize: 18.w,
               color: MyColor.textColor,
               fontFamily: MyString.libreBold,
             ),
           ),
           bodyLarge: GoogleFonts.fjallaOne(
             textStyle: TextStyle(
-              fontSize: 17,
+              fontSize: 17.w,
               color: MyColor.textColor,
               fontFamily: MyString.libreRegular,
             ),
           ),
           bodyMedium: GoogleFonts.fjallaOne(
             textStyle: TextStyle(
-              fontSize: 14,
+              fontSize: 14.w,
               color: MyColor.textColor,
               fontFamily: MyString.libreRegular,
             ),
           ),
           bodySmall: GoogleFonts.fjallaOne(
             textStyle: TextStyle(
-              fontSize: 11,
+              fontSize: 11.w,
               color: MyColor.textColor,
               fontFamily: MyString.libreRegular,
             ),
           ),
           labelLarge: TextStyle(
-            fontSize: 16,
+            fontSize: 16.w,
             color: MyColor.textColor,
             fontFamily: MyString.sherifTechRegular,
           ),
           labelMedium: TextStyle(
-            fontSize: 14,
+            fontSize: 14.w,
             color: MyColor.textColor,
             fontFamily: MyString.sherifTechRegular,
           ),
           labelSmall: TextStyle(
-            fontSize: 11,
+            fontSize: 11.w,
             color: MyColor.textColor,
             fontFamily: MyString.sherifTechRegular,
           ),
         ),
         scaffoldBackgroundColor: Colors.white,
-        cardColor: AppColors.cardLight,
+        cardColor: MyColor.cardLight,
         iconTheme: const IconThemeData(color: MyColor.bluePrimary),
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.white, size: 20),
@@ -161,11 +149,11 @@ abstract class AppTheme {
             foregroundColor: WidgetStateProperty.all(Colors.white),
           ),
         ),
-        dialogTheme: const DialogTheme(
+        dialogTheme: DialogTheme(
           backgroundColor: Colors.white,
           contentTextStyle: TextStyle(
             fontFamily: "Poppins_Regular",
-            fontSize: 14,
+            fontSize: 14.w,
             color: MyColor.textColor,
             fontWeight: FontWeight.w600,
           ),
@@ -173,7 +161,7 @@ abstract class AppTheme {
         tabBarTheme: TabBarTheme(
           labelColor: Colors.white,
           labelStyle: TextStyle(
-            fontSize: 14,
+            fontSize: 14.w,
             fontFamily: MyString.rubikRegular,
             fontWeight: FontWeight.bold,
           ),
@@ -191,33 +179,33 @@ abstract class AppTheme {
         visualDensity: visualDensity,
         textTheme: const TextTheme(
           titleLarge: TextStyle(
-            color: AppColors.textLigth,
+            color: MyColor.textLigth,
             fontSize: 17,
           ),
           titleMedium: TextStyle(
-            color: AppColors.textLigth,
+            color: MyColor.textLigth,
             fontSize: 11,
             letterSpacing: 0.3,
           ),
           bodyLarge: TextStyle(
             fontSize: 11,
-            color: AppColors.textFaded,
+            color: MyColor.textFaded,
           ),
           bodyMedium: TextStyle(
             fontSize: 11,
-            color: AppColors.textFaded,
+            color: MyColor.textFaded,
           ),
           bodySmall: TextStyle(
             fontSize: 11,
-            color: AppColors.textFaded,
+            color: MyColor.textFaded,
           ),
         ),
         scaffoldBackgroundColor: const Color(0xFF1B1E1F),
-        cardColor: AppColors.cardDark,
-        iconTheme: const IconThemeData(color: AppColors.iconLight),
+        cardColor: MyColor.cardDark,
+        iconTheme: const IconThemeData(color: MyColor.iconLight),
         colorScheme: ThemeData()
             .colorScheme
-            .copyWith(secondary: AppColors.accent)
+            .copyWith(secondary: MyColor.accent)
             .copyWith(surface: const Color(0xFF1B1E1F)),
       );
 }

@@ -98,17 +98,6 @@ class MyDialog {
     ).show(context);
   }
 
-
-
-  Future<bool> showExitPopup(BuildContext context) async {
-    return showAlertDialog(
-      context: context,
-      title: _getExitTitle,
-      content: _getExitSubContent,
-      actions: _getExitActionButtons(context),
-    );
-  }
-
   Future<bool> showAlertDialog(
       {required BuildContext context,
       required Widget title,
@@ -138,44 +127,5 @@ class MyDialog {
     return f ?? false;
   }
 
-  Widget get _getExitTitle => const Text(
-        'Exit App',
-        style: TextStyle(
-            fontFamily: "poppins_regular", fontWeight: FontWeight.bold),
-      );
-  Widget get _getExitSubContent => const Text(
-        'Do you want to exit SoowGood?',
-        style: TextStyle(
-            fontFamily: "poppins_regular",
-            fontSize: 14,
-            fontWeight: FontWeight.w600),
-      );
-  List<Widget> _getExitActionButtons(BuildContext context) => [
-        ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(false),
-          style: ButtonStyle(
-            backgroundColor: WidgetStateProperty.all(MyColor.skySecondary),
-          ),
-          child: const Text(
-            'No',
-            style: TextStyle(color: MyColor.bluePrimary),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 4.0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop(true);
-              //SystemNavigator.pop();
-            },
-            style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all(MyColor.bluePrimary),
-            ),
-            child: const Text(
-              'Yes',
-              style: TextStyle(color: MyColor.ashhLight),
-            ),
-          ),
-        ),
-      ];
+
 }

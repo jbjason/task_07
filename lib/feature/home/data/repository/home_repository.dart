@@ -1,32 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:task_07/feature/home/data/model/category.dart';
-import 'package:task_07/feature/home/data/model/task.dart';
 
 class HomeRepository {
-  // static List<Task> defaultTasks = [
-  //   Task(
-  //     id: "1234",
-  //     title: "Medical App UI",
-  //     details: "New Design in the market.",
-  //     startTime: 300,
-  //     endTime: 500,
-  //     date: DateTime.now(),
-  //     taskDate: DateTime.now().add(Duration(days: 1)),
-  //     category: 2,
-  //   ),
-  //   Task(
-  //     id: "456",
-  //     title: "Doorap App UI",
-  //     details: "New Design in the market.",
-  //     startTime: 400,
-  //     endTime: 600,
-  //     date: DateTime.now(),
-  //     taskDate: DateTime.now().add(Duration(days: 1)),
-  //     category: 1,
-  //   ),
-  // ];
-
   static const taskCategories = [
     Category(title: "URGENT", color: Color(0xFFFF3D00)),
     Category(title: "RUNNING", color: Color(0xFF69F0AE)),
