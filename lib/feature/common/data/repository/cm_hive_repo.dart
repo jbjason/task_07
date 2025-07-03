@@ -12,7 +12,7 @@ class CmHiveRepo {
 
   Future<void> addHiveBoxInfo(LoginInfo info) async {
     try {
-      await Hive.box(MyString.boxName).put(2, info.toJson());
+      await Hive.box(MyString.boxName).put(1, info.toJson());
       Logger().i('Successful');
     } catch (e) {
       Logger().i('Hive Error: $e');

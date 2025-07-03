@@ -26,5 +26,5 @@ class LoginInfo {
   String toJson() => json.encode(toMap());
 
   factory LoginInfo.fromJson(dynamic source) =>
-      LoginInfo.fromMap(source as Map<String, dynamic>);
+      LoginInfo.fromMap(json.decode(source) as Map<String, dynamic>);
 }

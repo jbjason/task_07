@@ -10,7 +10,7 @@ class Task {
   final DateTime date;
   final DateTime taskDate;
   final int category;
-  Task({
+  const Task({
     required this.id,
     required this.title,
     required this.details,
@@ -67,7 +67,7 @@ class Task {
           safeParse<int>(map['date'], 'date')!),
       taskDate: DateTime.fromMillisecondsSinceEpoch(
           safeParse<int>(map['taskDate'], 'taskDate')!),
-      category: safeParse<int>(map['category'], 'category')!,
+      category: (safeParse<int>(map['category'], 'category')!) % 3,
     );
   }
 

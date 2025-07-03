@@ -3,14 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:task_07/feature/home/data/repository/home_repository.dart';
 import 'package:task_07/feature/home/presentation/provider/task_provider.dart';
 import 'package:task_07/feature/home/presentation/widget/home_listview_item.dart';
+import 'package:task_07/feature/home/presentation/widget/home_search_count_bar.dart';
 
 class HomeListView extends StatelessWidget {
   const HomeListView({super.key});
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Future.delayed(Duration(seconds: 1)),
-      // Provider.of<TaskProvider>(context, listen: false).fetchTaskList(context),
+      future: _fetchData(context),
       builder: (context, snapShot) {
         if (snapShot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
@@ -24,10 +24,7 @@ class HomeListView extends StatelessWidget {
         }
         return RefreshIndicator(
           backgroundColor: Colors.white,
-          onRefresh: () async {
-            await Future.delayed(Duration(seconds: 1));
-            // Provider.of<TaskProvider>(context, listen: false).fetchTaskList(context),
-          },
+          onRefresh: () => _fetchData(context),
           child: _getBody(context),
         );
       },
@@ -35,16 +32,27 @@ class HomeListView extends StatelessWidget {
   }
 
   Widget _getBody(BuildContext context) {
-    final tasks = Provider.of<TaskProvider>(context).getTasks;
-    return ListView.separated(
-      itemCount: tasks.length,
-      clipBehavior: Clip.none,
-      separatorBuilder: (_, __) => const SizedBox(height: 20),
-      itemBuilder: (context, i) {
-        return HomeRepository.getGlassEffect(
-          child: HomeListViewItem(task: tasks[i]),
-        );
-      },
+    final tasks = Provider.of<TaskProvider>(context).searchTaskList;
+    return Column(
+      children: [
+        HomeSearchCountBar(),
+        Expanded(
+          child: ListView.separated(
+            itemCount: tasks.length,
+            clipBehavior: Clip.none,
+            separatorBuilder: (_, __) => const SizedBox(height: 20),
+            itemBuilder: (context, i) {
+              return HomeRepository.getGlassEffect(
+                child: HomeListViewItem(task: tasks[i]),
+              );
+            },
+          ),
+        ),
+      ],
     );
+  }
+
+  Future<void> _fetchData(BuildContext context) async {
+    Provider.of<TaskProvider>(context, listen: false).fetchTaskList(context);
   }
 }

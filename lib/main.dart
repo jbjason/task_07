@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:task_07/config/route/routes.dart';
 import 'package:task_07/config/theme/theme.dart';
 import 'package:task_07/core/util/my_string.dart';
+import 'package:task_07/feature/auth/presentation/provider/auth_provider.dart';
 import 'package:task_07/feature/common/presentation/page/splash_screen.dart';
 import 'package:task_07/feature/home/presentation/provider/task_provider.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => TaskProvider()),
       ],
       child: MaterialApp(
