@@ -7,6 +7,7 @@ A Flutter task management application with Firebase integration for authenticati
 ## Features
 
 - User authentication (email/password)
+- Auto login through Local Storage data management
 - Create, read, update, and delete tasks
 - Task categorization
 - Responsive UI for mobile devices
