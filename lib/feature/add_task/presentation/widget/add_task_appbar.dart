@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_07/core/util/my_dimens.dart';
 
 class AddtAppbar extends StatelessWidget {
@@ -24,7 +25,7 @@ class AddtAppbar extends StatelessWidget {
         ),
         // addTask text
         Padding(
-          padding: const EdgeInsets.only(left: 20, top: 10),
+          padding:  EdgeInsets.only(left: 20.w, top: 10.w),
           child: Align(
             alignment: Alignment.centerLeft,
             child: MyDimens()

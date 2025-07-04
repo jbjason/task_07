@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_07/config/extension/media_query_extension.dart';
 import 'package:task_07/feature/add_task/presentation/widget/add_task_body.dart';
 import 'package:task_07/feature/add_task/presentation/widget/add_task_painter.dart';
@@ -22,7 +23,7 @@ class AddTaskScreen extends StatelessWidget {
             Container(
               height: context.screenHeight,
               width: context.screenWidth,
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              padding:  EdgeInsets.symmetric(vertical: 20.w, horizontal: 25.w),
               child: SingleChildScrollView(
                 child: AddTaskBody(task: task),
               ),

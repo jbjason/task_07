@@ -37,13 +37,18 @@ class TaskProvider with ChangeNotifier {
   void updateTask(Task task) {
     final index = _tasks.indexWhere((t) => t.id == task.id);
     if (index != -1) {
-      _tasks[index] = task;
+      _searchTaskList[index] = task;
       notifyListeners();
     }
   }
 
+  void resetTask() {
+    _searchTaskList = [..._tasks];
+    notifyListeners();
+  }
+
   void deleteTask(String id) {
-    _tasks.removeWhere((task) => task.id == id);
+    _searchTaskList.removeWhere((task) => task.id == id);
     notifyListeners();
   }
 }

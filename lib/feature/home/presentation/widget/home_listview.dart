@@ -7,11 +7,12 @@ import 'package:task_07/feature/home/presentation/widget/home_listview_item.dart
 import 'package:task_07/feature/home/presentation/widget/home_search_count_bar.dart';
 
 class HomeListView extends StatelessWidget {
-  const HomeListView({super.key});
+  const HomeListView({super.key, required this.fetchTaskFuture});
+  final Future fetchTaskFuture;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _fetchData(context),
+      future: fetchTaskFuture,
       builder: (context, snapShot) {
         if (snapShot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
@@ -25,7 +26,7 @@ class HomeListView extends StatelessWidget {
         }
         return RefreshIndicator(
           backgroundColor: Colors.white,
-          onRefresh: () => _fetchData(context),
+          onRefresh: () => fetchTaskFuture,
           child: _getBody(context),
         );
       },
@@ -63,7 +64,5 @@ class HomeListView extends StatelessWidget {
     );
   }
 
-  Future<void> _fetchData(BuildContext context) async {
-    Provider.of<TaskProvider>(context, listen: false).fetchTaskList(context);
-  }
+  
 }

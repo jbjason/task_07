@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ class HomeSearchCountBar extends StatefulWidget {
 
 class _HomeSearchCountBarState extends State<HomeSearchCountBar> {
   String _contactField = "";
+  Timer? _debounce;
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +43,24 @@ class _HomeSearchCountBarState extends State<HomeSearchCountBar> {
         decoration: InputDecoration(
           hintText: "Search by name",
           hintStyle: const TextStyle(color: MyColor.inActiveColor),
-          prefixIcon:
-              const Icon(Icons.call_outlined, color: MyColor.inActiveColor),
+          prefixIcon: const Icon(Icons.search, color: MyColor.inActiveColor),
         ),
         onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
         onChanged: (val) {
           _contactField = val;
-          _searchPatientForOther();
-          setState(() {});
+          if (_contactField.isNotEmpty) {
+            _onSearchTask();
+          } else {
+            Provider.of<TaskProvider>(context, listen: false).resetTask();
+          }
         },
       );
 
-  void _searchPatientForOther() async {
-    final data = Provider.of<TaskProvider>(context, listen: false);
-    data.searchTask(_contactField, context);
+  void _onSearchTask() async {
+    if (_debounce?.isActive ?? false) _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      final data = Provider.of<TaskProvider>(context, listen: false);
+      data.searchTask(_contactField, context);
+    });
   }
 }

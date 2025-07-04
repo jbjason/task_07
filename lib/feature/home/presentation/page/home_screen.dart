@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:task_07/config/extension/media_query_extension.dart';
+import 'package:task_07/feature/home/presentation/provider/task_provider.dart';
 import 'package:task_07/feature/home/presentation/widget/home_appbar.dart';
 import 'package:task_07/feature/home/presentation/widget/home_listview.dart';
 import 'package:task_07/feature/home/presentation/widget/home_painter.dart';
@@ -31,7 +33,9 @@ class HomeScreen extends StatelessWidget {
                   HomeTitleButton(selectedDate: selectedDate),
                   const SizedBox(height: 20),
                   // To-do List
-                  Expanded(child: HomeListView()),
+                  Expanded(
+                      child:
+                          HomeListView(fetchTaskFuture: _fetchData(context))),
                 ],
               ),
             ),
@@ -39,5 +43,9 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _fetchData(BuildContext context) async {
+    Provider.of<TaskProvider>(context, listen: false).fetchTaskList(context);
   }
 }
